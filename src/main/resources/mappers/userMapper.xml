@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.spring.rentcar.userMapper">
+
+	<select id="getTime" resultType="String">
+		select now()
+	</select>
+	
+	<insert id="insertUser">
+		insert into User(userId, userPw, userName, userEmail) values(#{userId}, #{userPw}, #{userName}, #{userEmail})
+	</insert>
+
+	<select id="readUser" parameterType="UserVO" resultType="UserVO">
+		select * from user where userId=#{userId}
+	</select>
+	
+	<select id="readWithPw" parameterType="UserVO" resultType="UserVO">
+		select * from user where userId=#{userId} and userPw=#{userPw}
+	</select>
+
+</mapper> 
+  
