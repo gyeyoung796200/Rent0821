@@ -6,6 +6,7 @@
 	<typeAliases>
 		<typeAlias type="com.spring.rentcar.domain.UserVO" alias="UserVO"/>
 		<typeAlias type="com.spring.rentcar.domain.BoardVO" alias="BoardVO"/>
+		<typeAlias type="com.spring.rentcar.commons.Criteria" alias="Criteria"/>
 	</typeAliases>	
   
   

@@ -28,5 +28,22 @@
 		]]>
 	</select>
 
+	<select id="listPaging" parameterType="int" resultType="BoardVO">
+	
+		<![CDATA[
+		select * from board where bno > 0 order by bno desc, regDate desc limit #{page}, 10
+		]]>
+	</select>
+
+	<select id="listCriteria" parameterType="Criteria" resultType="BoardVO">
+	
+		<![CDATA[
+		select * from board where bno > 0 order by bno desc, regDate desc limit #{pageStart}, #{perPageNum}
+		]]>
+	</select>
+	
+	<select id="totalCount" resultType="int">
+		select count(*) from board where bno > 0
+	</select>
+	
 </mapper> 
-  

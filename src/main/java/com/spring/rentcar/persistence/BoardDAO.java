@@ -2,6 +2,7 @@ package com.spring.rentcar.persistence;
 
 import java.util.List;
 
+import com.spring.rentcar.commons.Criteria;
 import com.spring.rentcar.domain.BoardVO;
 
 public interface BoardDAO {
@@ -21,4 +22,11 @@ public interface BoardDAO {
 	//글목록
 	public List<BoardVO> listAll() throws Exception;
 	
+	/***********************************/
+	
+	public List<BoardVO> listPaging(int page) throws Exception;
+	
+	public List<BoardVO> listCriteria(Criteria cri) throws Exception;
+	
+	public int totalCount() throws Exception;
 }

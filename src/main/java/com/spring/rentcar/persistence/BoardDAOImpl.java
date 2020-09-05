@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.spring.rentcar.commons.Criteria;
 import com.spring.rentcar.domain.BoardVO;
 
 @Repository
@@ -31,20 +32,44 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public void update(BoardVO boardVO) throws Exception {
-		// TODO Auto-generated method stub
-		
+
+		session.update(namespace+".update", boardVO);
 	}
 
 	@Override
 	public void delete(Integer bno) throws Exception {
-		// TODO Auto-generated method stub
-		
+
+		session.delete(namespace+".delete", bno);
 	}
 
 	@Override
 	public List<BoardVO> listAll() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+
+		return session.selectList(namespace+".listAll");
+	}
+
+	@Override
+	public List<BoardVO> listPaging(int page) throws Exception {
+		
+		if(page <= 0) {
+			page = 1;
+		}
+		
+		page = (page - 1) * 10;
+
+		return session.selectList(namespace+".listPaging", page);
+	}
+
+	@Override
+	public List<BoardVO> listCriteria(Criteria cri) throws Exception {
+
+		return session.selectList(namespace+".listCriteria", cri);
+	}
+
+	@Override
+	public int totalCount() throws Exception {
+		
+		return session.selectOne(namespace+".totalCount");
 	}
 
 }
