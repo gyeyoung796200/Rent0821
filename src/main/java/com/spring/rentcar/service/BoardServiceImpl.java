@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.spring.rentcar.commons.Criteria;
+import com.spring.rentcar.commons.SearchCriteria;
 import com.spring.rentcar.domain.BoardVO;
 import com.spring.rentcar.persistence.BoardDAO;
 
@@ -57,6 +58,18 @@ public class BoardServiceImpl implements BoardService {
 	public int totalCount() throws Exception {
 
 		return dao.totalCount();
+	}
+
+	@Override
+	public List<BoardVO> listSearchCriteria(SearchCriteria cri) throws Exception {
+
+		return dao.listSearchCriteria(cri);
+	}
+
+	@Override
+	public int searchTotalCount(SearchCriteria cri) throws Exception {
+
+		return dao.searchTotalCount(cri);
 	}
 
 }

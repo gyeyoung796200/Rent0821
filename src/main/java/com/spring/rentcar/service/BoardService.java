@@ -3,6 +3,7 @@ package com.spring.rentcar.service;
 import java.util.List;
 
 import com.spring.rentcar.commons.Criteria;
+import com.spring.rentcar.commons.SearchCriteria;
 import com.spring.rentcar.domain.BoardVO;
 
 public interface BoardService {
@@ -26,4 +27,9 @@ public interface BoardService {
 	public List<BoardVO> listCriteria(Criteria cri) throws Exception;
 	
 	public int totalCount() throws Exception;
+	
+	
+	public List<BoardVO> listSearchCriteria(SearchCriteria cri) throws Exception;
+	
+	public int searchTotalCount(SearchCriteria cri) throws Exception;
 }

@@ -3,6 +3,7 @@ package com.spring.rentcar.persistence;
 import java.util.List;
 
 import com.spring.rentcar.commons.Criteria;
+import com.spring.rentcar.commons.SearchCriteria;
 import com.spring.rentcar.domain.BoardVO;
 
 public interface BoardDAO {
@@ -29,4 +30,10 @@ public interface BoardDAO {
 	public List<BoardVO> listCriteria(Criteria cri) throws Exception;
 	
 	public int totalCount() throws Exception;
+	
+	/*****************************/
+	
+	public List<BoardVO> listSearchCriteria(SearchCriteria cri) throws Exception;
+	
+	public int searchTotalCount(SearchCriteria cri) throws Exception;
 }

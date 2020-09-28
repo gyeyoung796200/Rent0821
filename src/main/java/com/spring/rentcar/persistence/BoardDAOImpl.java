@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.spring.rentcar.commons.Criteria;
+import com.spring.rentcar.commons.SearchCriteria;
 import com.spring.rentcar.domain.BoardVO;
 
 @Repository
@@ -71,5 +72,18 @@ public class BoardDAOImpl implements BoardDAO {
 		
 		return session.selectOne(namespace+".totalCount");
 	}
+
+	@Override
+	public List<BoardVO> listSearchCriteria(SearchCriteria cri) throws Exception {
+
+		return session.selectList(namespace+".listSearchCriteria", cri);
+	}
+
+	@Override
+	public int searchTotalCount(SearchCriteria cri) throws Exception {
+
+		return session.selectOne(namespace+".searchTotalCount", cri);
+	}
+
 
 }

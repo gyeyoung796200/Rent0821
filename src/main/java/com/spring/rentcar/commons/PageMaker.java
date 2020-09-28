@@ -1,5 +1,9 @@
 package com.spring.rentcar.commons;
 
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -13,7 +17,7 @@ public class PageMaker {
 
 	private int displayPageNum = 5; //한화면에 표시될 페이지 수
 
-	private Criteria cri;
+	private SearchCriteria cri;
 	
 	private void calcData() {
 		
@@ -83,23 +87,46 @@ public class PageMaker {
 		this.displayPageNum = displayPageNum;
 	}
 
-	public Criteria getCri() {
+	public SearchCriteria getCri() {
 		return cri;
 	}
 
-	public void setCri(Criteria cri) {
+	public void setCri(SearchCriteria cri) {
 		this.cri = cri;
 	}
 	
 	
 	public String makeQuery(int page) {
 		
-		UriComponents uriComponents = UriComponentsBuilder.newInstance()
-															.queryParam("page", page)
-															.queryParam("perPageNum", cri.getPerPageNum())
-															.build();
+		UriComponents uriComponents = UriComponentsBuilder.newInstance().queryParam("page", page)
+																		.queryParam("perPageNum", cri.getPerPageNum())
+																		.build();
 		
 		return uriComponents.toUriString();
+	}
+	
+	public String makeSearch(int page) {
+		
+		UriComponents uriComponents = UriComponentsBuilder.newInstance().queryParam("page", page)
+																		.queryParam("perPageNum", cri.getPerPageNum())
+																		.queryParam("searchType", cri.getSearchType())
+																		.queryParam("keyWord", cri.getKeyWord())
+																		.build();
+		
+		return uriComponents.toUriString();
+	}
+	
+	private String encoding(String keyWord) {
+		
+		if(keyWord == null || keyWord.trim().length() == 0) {
+			return "";
+		}
+		try {
+			return URLEncoder.encode(keyWord, "UTF-8");
+		}catch (UnsupportedEncodingException e) {
+			return "";
+		}
+		
 	}
 
 }

@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.rentcar.commons.Criteria;
 import com.spring.rentcar.commons.PageMaker;
+import com.spring.rentcar.commons.SearchCriteria;
 import com.spring.rentcar.domain.BoardVO;
 import com.spring.rentcar.service.BoardService;
 
@@ -93,8 +94,8 @@ public class BoardController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/delete")
-	public ModelAndView deletePOST(@RequestParam("bno")int bno, Criteria cri ) throws Exception{
+	@RequestMapping(value = "/delete") //기본criteria
+	public ModelAndView deletePOST(@RequestParam("bno")int bno, SearchCriteria cri ) throws Exception{
 		
 		logger.info("delete board post");
 		
@@ -120,7 +121,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
-	public ModelAndView modifyGET(@RequestParam("bno")int bno, Criteria cri) throws Exception{
+	public ModelAndView modifyGET(@RequestParam("bno")int bno, SearchCriteria cri) throws Exception{
 		
 		logger.info("modify board get");
 		
@@ -144,7 +145,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public ModelAndView modifyPOST(BoardVO boardVO, Criteria cri) throws Exception{
+	public ModelAndView modifyPOST(BoardVO boardVO, SearchCriteria cri) throws Exception{
 		
 		logger.info("modify board post");
 		
@@ -171,7 +172,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/listCriteria", method = RequestMethod.GET)
-	public ModelAndView listCriteria(Criteria cri) throws Exception{   //Criteria에는 현재 페이지와 페이지당 글의 개수가 저장되어있음
+	public ModelAndView listCriteria(SearchCriteria cri) throws Exception{   //Criteria에는 현재 페이지와 페이지당 글의 개수가 저장되어있음
 		
 		logger.info("listCriteria board get");
 		

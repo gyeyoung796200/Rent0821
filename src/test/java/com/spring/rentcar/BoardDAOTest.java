@@ -14,6 +14,8 @@ import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.spring.rentcar.commons.Criteria;
+import com.spring.rentcar.commons.PageMaker;
+import com.spring.rentcar.commons.SearchCriteria;
 import com.spring.rentcar.domain.BoardVO;
 import com.spring.rentcar.persistence.BoardDAO;
 
@@ -43,7 +45,6 @@ public class BoardDAOTest {
 		}
 	}
 	*/
-	
 	
 	/*
 	@Test
@@ -104,6 +105,7 @@ public class BoardDAOTest {
 	}
 	*/
 	
+	/*
 	@Test
 	public void testURI() throws Exception{
 		
@@ -117,5 +119,35 @@ public class BoardDAOTest {
 		logger.info(uriComponents.toString());
 		
 	}
+	*/
+	
+	/*
+	@Test
+	public void search() throws Exception{
+		
+		PageMaker pageMaker = new PageMaker();
+		
+		SearchCriteria cri = new SearchCriteria();
+		
+		cri.setKeyWord("78");
+		cri.setSearchType("t");
+		cri.setPage(1);
+		cri.setPerPageNum(10);
+		
+		
+		pageMaker.setCri(cri);
+		
+		
+		List<BoardVO> list = dao.listSearchCriteria(cri);
+
+		for (BoardVO boardVO : list) {
+			
+			logger.info(boardVO.getBno()+":"+boardVO.getTitle());
+		}
+		
+		
+	}
+	*/
+	
 	
 }

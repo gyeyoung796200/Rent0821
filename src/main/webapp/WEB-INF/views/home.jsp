@@ -61,6 +61,10 @@
           	<a class="nav-link" href="${pageContext.request.contextPath }/board/listCriteria">게시판 페이징</a>
           </li>
           
+          <li class="nav-item">
+          	<a class="nav-link" href="${pageContext.request.contextPath }/sboard/listCriteria">검색기능 게시판 페이징</a>
+          </li>
+          
           
         </ul>
       </div>

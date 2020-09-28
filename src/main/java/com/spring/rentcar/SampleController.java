@@ -1,5 +1,6 @@
 package com.spring.rentcar;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -71,9 +72,9 @@ public class SampleController {
 		ProductVO vo = new ProductVO("샘플상품", 30000);
 		
 		return vo;
-		
-		
 	}
+	
+	
 	
 	
 }
